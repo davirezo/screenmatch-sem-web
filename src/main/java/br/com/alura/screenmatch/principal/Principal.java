@@ -9,6 +9,7 @@ import br.com.alura.screenmatch.service.ConsumoApi;
 import br.com.alura.screenmatch.service.ConverteDados;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -88,9 +89,9 @@ public class Principal {
     }
 
     private void listarSeriesBuscadas() {
-        dadosSeries.stream()
-                .map(d -> new Serie(d))
-                .sorted(Comparator.comparing(Serie::getGenero))
+        List<Serie> series = repositorio.findAll();
+        series.stream()
+                .sorted()
                 .forEach(System.out::println);
     }
 }

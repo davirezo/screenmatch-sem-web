@@ -12,4 +12,15 @@ public record DadosSerie(@JsonAlias("Title") String titulo,
                          @JsonAlias("Poster") String poster,
                          @JsonAlias("Plot") String sinopse)
 {
+  @Override
+  public String toString() {
+    return "DadosSerie: " +
+            "\n titulo= '" + titulo + '\'' +
+            "\n totalTemporadas= " + totalTemporadas +
+            "\n avaliacao= '" + avaliacao + '\'' +
+            "\n genero= '" + genero + '\'' +
+            "\n atores= '" + atores + '\'' +
+            "\n poster= '" + poster + '\'' +
+            "\n sinopse= '" + sinopse;
   }
+}
