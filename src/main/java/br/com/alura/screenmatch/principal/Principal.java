@@ -121,7 +121,7 @@ public class Principal {
     private void buscarEpisodioPorTrecho() {
         System.out.println("Qual o nome do episodio para busca?");
         var trechoEpisodio = leitura.nextLine();
-        List<Episodio> episodiosEncontrados = repositorio.episodioPorTrecho(trechoEpisodio);
+        List<Episodio> episodiosEncontrados = repositorio.episodiosPorTrecho(trechoEpisodio);
 
         if (episodiosEncontrados.isEmpty()) {
             System.out.println("Nenhum episodio encontrado.");
@@ -154,7 +154,7 @@ public class Principal {
         System.out.println("Escolha uma série pelo nome");
         var nomeSerie = leitura.nextLine();
 
-        Optional<Serie> serie = repositorio.findFirstByTituloContainingIgnoreCase(nomeSerie);
+        Optional<Serie> serie = repositorio.findFirstByTituloIgnoreCase(nomeSerie);
 
         if(serie.isPresent()) {
 
@@ -190,7 +190,7 @@ public class Principal {
     private void buscarSeriePorTitulo() {
         System.out.println("Escolha um série pelo nome: ");
         var nomeSerie = leitura.nextLine();
-        serieBusca = repositorio.findFirstByTituloContainingIgnoreCase(nomeSerie);
+        serieBusca = repositorio.findFirstByTituloIgnoreCase(nomeSerie);
 
         if (serieBusca.isPresent()) {
             System.out.println("Dados da série: " + serieBusca.get());
@@ -234,7 +234,7 @@ public class Principal {
         System.out.println("Com avaliação a partir de que valor? ");
         var avaliacao = leitura.nextDouble();
         leitura.nextLine();
-        List<Serie> filtroSeries = repositorio.seriePorTemporadaeAvaliacao(totalTemporadas, avaliacao);
+        List<Serie> filtroSeries = repositorio.seriesPorTemporadaEAValiacao(totalTemporadas, avaliacao);
         System.out.println("*** Séries filtradas ***");
         filtroSeries.forEach(s ->
                 System.out.println(s.getTitulo() + "  - avaliação: " + s.getAvaliacao()));
